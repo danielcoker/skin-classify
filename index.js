@@ -1,13 +1,17 @@
 const express = require('express');
-var cors = require('cors');
+const dotenv = require('dotenv');
+const cors = require('cors');
+
 const TeachableMachine = require('@sashido/teachablemachine-node');
+
+dotenv.config();
 
 const model = new TeachableMachine({
   modelUrl: 'https://teachablemachine.withgoogle.com/models/aKnrU6zyg/',
 });
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 app.use(cors());
 
